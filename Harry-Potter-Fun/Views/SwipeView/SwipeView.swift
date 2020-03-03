@@ -11,7 +11,7 @@ import SwiftUI
 struct SwipeView: View {        @State private var offset: CGFloat = 0
     @State private var index = 0
     
-    let users: [UserModel]
+    let users: [SwipeCharacterModel]
     let spacing: CGFloat = 10
     
     var body: some View {
@@ -49,8 +49,8 @@ struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
         
         SwipeView(users: [
-            UserModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1),
-             UserModel(imageName: "RonWeasley", name: "Ron Weasley", age: 28, hobby: "Dumb Shit", id: 2)
+            SwipeCharacterModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1),
+             SwipeCharacterModel(imageName: "RonWeasley", name: "Ron Weasley", age: 28, hobby: "Dumb Shit", id: 2)
         
         
         ])

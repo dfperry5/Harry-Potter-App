@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct CharacterSwipeView: View {
-    let users: [UserModel] = [
-        UserModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1),
-         UserModel(imageName: "RonWeasley", name: "Ron Weasley", age: 28, hobby: "Dumb Shit", id: 2)
+    let users: [SwipeCharacterModel] = [
+        SwipeCharacterModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1),
+         SwipeCharacterModel(imageName: "RonWeasley", name: "Ron Weasley", age: 28, hobby: "Dumb Shit", id: 2)
     ]
     
     var body: some View {

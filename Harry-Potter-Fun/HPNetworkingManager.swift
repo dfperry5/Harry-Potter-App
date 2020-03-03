@@ -28,7 +28,6 @@ class HPNetworkingManager: ObservableObject {
                 if let safeData = data  {
                     do {
                        let result = try decoder.decode(String.self, from: safeData)
-                        print(result)
                         DispatchQueue.main.async {
                             self.currentHouse = result
                         }

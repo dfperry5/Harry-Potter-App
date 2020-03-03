@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct UserView: View {
-  let userModel: UserModel
+  let userModel: SwipeCharacterModel
   
   var body: some View {
       ZStack {
@@ -26,7 +26,7 @@ struct UserView: View {
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
         UserView(
-            userModel: UserModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1)
+            userModel: SwipeCharacterModel(imageName: "Hermionie", name: "Hermionie Granger", age: 28, hobby: "Reading", id: 1)
         )
     }
 }

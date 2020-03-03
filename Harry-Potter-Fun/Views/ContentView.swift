@@ -16,38 +16,34 @@ struct ContentView: View {
     
     @State
     var hasBeenSorted = false
-
-    let noCurrentHouseMessage = "You don't have a house yet. Click Sort!"
     
-    var options: [OptionModel] = [
-        OptionModel(id: 1, optionDescription: "Get Sorted"),
-        OptionModel(id: 2, optionDescription: "Select your favorites"),
-        OptionModel(id:3, optionDescription: "View Your Profile")
-        
-    ]
+    @State
+    var user = UserModel(name: "Dylan", house: nil, favoriteCharacters: [])
     
+    @State private var show_modal: Bool = false
     
     var body: some View {
-        NavigationView {
-            List(options){ option in
-                NavigationLink(destination: CharacterSwipeView()) {
-                    HStack{
-                        Text("\(option.id)")
-                        Text(option.optionDescription)
-                    }
-                   }
+        VStack{
+            NavigationView {
+                NavigationList(user: self.$user)
+            .navigationBarTitle("Welcome, Dylan")
+            .navigationBarHidden(false)
+            .navigationBarItems(trailing:
+                Button( action: {
+                    print("Help tapped!")
+                    self.show_modal = true
+                }){
+                    Image(systemName: "person.circle.fill")
+                    .resizable()
+                }.sheet(isPresented: self.$show_modal) {
+                    ProfileView()
+                })
             }
-           
-        .navigationBarTitle("DP Harry Potter")
+            
+            
         }
-        
-    }
-    
-    func getHeadline() -> String {
-        if hpNetworkManager.currentHouse.count > 0 {
-            return "Your house is: \(hpNetworkManager.currentHouse)"
-        } else {
-            return noCurrentHouseMessage
+        .onAppear() {
+            print("Back in here - \(self.user)")
         }
     }
 }

@@ -15,6 +15,8 @@ struct HouseView: View {
     @ObservedObject
     var hpNetworkManager = HPNetworkingManager()
     
+    @Binding var user: UserModel
+    
     var body: some View {
         VStack{
             Image(hpNetworkManager.currentHouse)
@@ -26,14 +28,24 @@ struct HouseView: View {
                 .fontWeight(.bold)
         }
         .onAppear {
+            if let currentHouse = self.user.house {
+                print(currentHouse)
+                self.hpNetworkManager.currentHouse = currentHouse
+            } else {
                 self.hpNetworkManager.getRandomHogwartsHouse()
+                print(self.hpNetworkManager.currentHouse)
+                self.user.house = self.hpNetworkManager.currentHouse
+            }
+               
         }
     }
     
+    
 }
 
-struct HouseView_Previews: PreviewProvider {
-    static var previews: some View {
-        HouseView()
-    }
-}
+//struct HouseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        var user: UserModel = UserModel(name: "Dylan", house: nil, favoriteCharacters: [])
+//        HouseView(user)
+//    }
+//}
